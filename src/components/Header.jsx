@@ -9,13 +9,11 @@ const Header = () => {
     <header className="absolute top-0 left-0 w-full z-50 text-white">
       <div className="bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center space-x-2 font-semibold text-lg">
             <img src="/logo-icon.png" alt="Logo" className="w-6 h-6" />
             <span>Realtor X</span>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-sm">
             <a
               href="#"
@@ -43,7 +41,6 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <button className="flex items-center text-sm hover:text-blue-300">
               <FiUser className="mr-1" />
@@ -54,7 +51,6 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Icon */}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? (
@@ -73,7 +69,6 @@ const Header = () => {
                   />
                 </svg>
               ) : (
-                // Hamburger Icon
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -92,20 +87,18 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Bottom Border */}
         <div
           className="w-auto border-b border-white/40"
           style={{ marginLeft: "10%", marginRight: "10%" }}
         />
 
-        {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className="md:hidden bg-black/50 backdrop-blur-md text-white text-sm py-4 px-6 space-y-4">
             <a
               href="#"
               onClick={() => {
                 setActiveNav("For buyers");
-                setMenuOpen(false); // Optional: auto-close menu
+                setMenuOpen(false); 
               }}
               className={`block px-1 py-2 rounded-md text-sm font-medium transition ${
                 activeNav === "For buyers"

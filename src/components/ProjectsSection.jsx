@@ -33,7 +33,6 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
     const keyword = searchQuery?.trim().toLowerCase();
     const city = activeCity?.trim().toLowerCase();
 
-    // 🔍 Filter by search keyword
     if (keyword) {
       result = result.filter(
         (prop) =>
@@ -43,14 +42,12 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
       );
     }
 
-    // 🌆 Filter by selected city
     if (activeCity) {
       result = result.filter(
         (prop) => prop.address?.toLowerCase().includes(city)
       );
     }
 
-    // 🏡 Filter by property type
     if (propertyType && propertyType.toLowerCase() !== "all") {
       result = result.filter(
         (prop) =>
@@ -77,7 +74,6 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
         Browse New Projects in the UAE
       </h2>
 
-      {/* City Tabs */}
       <div className="w-full flex justify-center mb-8">
         <div className="inline-flex flex-wrap items-center justify-center rounded-md border border-gray-300 overflow-hidden gap-px">
           {cities.map((city) => (
@@ -96,7 +92,6 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
         </div>
       </div>
 
-      {/* Property Cards */}
       {properties.length > 0 ? (
         <div className="relative pb-12">
           {showLeftArrow && (

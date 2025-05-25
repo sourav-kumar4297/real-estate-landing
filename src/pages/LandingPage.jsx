@@ -11,7 +11,6 @@ const LandingPage = () => {
 
   return (
     <main>
-      {/* Hero Section */}
       <section
         className="relative bg-cover bg-no-repeat bg-center h-[95vh] text-white"
         style={{ backgroundImage: `url(${heroBg})` }}

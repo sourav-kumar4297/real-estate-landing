@@ -16,7 +16,6 @@ const PropertyCard = ({ property }) => {
 
   return (
     <div className="min-w-[280px] max-w-[280px] bg-white rounded-xl shadow-md overflow-hidden relative">
-      {/* Image Slider */}
       <div className="relative w-full h-44">
         <Swiper
           modules={[Navigation, Pagination]}
@@ -41,7 +40,6 @@ const PropertyCard = ({ property }) => {
           ))}
         </Swiper>
 
-        {/* Verified Badge */}
         {property.verified && (
           <span className="absolute top-4 bg-green-600 text-white text-xs px-4 py-0.5 rounded-br-2xl z-20">
             Verified
@@ -53,7 +51,6 @@ const PropertyCard = ({ property }) => {
           </span>
         )}
 
-        {/* Navigation Arrows */}
         <button
           className={`prev-${property.id} absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/70 p-1 rounded-full`}
         >
@@ -66,12 +63,10 @@ const PropertyCard = ({ property }) => {
         </button>
       </div>
 
-    {/* Property Details */}
 <div className="p-4 pb-3 ">
   {/* Title */}
   <h3 className="text-sm font-semibold truncate mb-1">{property.title}</h3>
 
-  {/* Price & Size with Divider */}
   <div className="flex justify-between items-start text-sm">
     <div>
       <span className="text-blue-700 font-bold">
@@ -86,14 +81,12 @@ const PropertyCard = ({ property }) => {
     </div>
   </div>
 
-  {/* Meta Info as Bullet List */}
   <ul className="flex flex-wrap gap-2 text-[11px] text-gray-600 mt-3 list-disc list-inside">
     <li>{property.condition}</li>
     <li>{property.type}</li>
     <li>{property.bedrooms}Bhk</li>
   </ul>
 
-  {/* Dealer Info with Icon + Weeks Ago */}
   <div className="flex items-start text-[10px] text-gray-600 mt-3">
     <div className="w-6 h-6 rounded-sm bg-gray-400 flex items-center my-1 justify-center text-black text-[10px] mr-2">
       <FaUser />
@@ -113,10 +106,8 @@ const PropertyCard = ({ property }) => {
   </div>
 </div>
 
-{/* Bottom Divider */}
 <div className="border-t border-gray-200 my-1 mx-4" />
 
-{/* Footer: Location and Favorite */}
 <div className="flex justify-between items-center px-4 py-2 text-sm">
   <div className="flex items-center text-gray-700 truncate">
     <span className="text-lg mr-1">

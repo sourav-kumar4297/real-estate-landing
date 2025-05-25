@@ -32,7 +32,6 @@ const FeatureCards = () => {
             style={{ backgroundImage: `url(${item.image})` }}
           >
             <div className="absolute inset-0 bg-black/20" />{" "}
-            {/* Optional overlay */}
             <div className="relative z-10 p-6 text-black">
               <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
               <p className="text-sm w-[125px]">{item.desc} &rsaquo;</p>
