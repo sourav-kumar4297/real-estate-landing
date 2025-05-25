@@ -21,17 +21,19 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-   const fetchProperties = async () => {
+  const fetchProperties = async () => {
   try {
     setIsLoading(true);
 
+    const proxy = "https://corsproxy.io/?";
     const url = "https://staging.thunderscript.com/api/properties";
-    const proxy = "http://localhost:8080/";
+
     const res = await axios.get(proxy + url);
     let result = res.data || [];
 
     const keyword = searchQuery?.trim().toLowerCase();
     const city = activeCity?.trim().toLowerCase();
+    const type = propertyType?.trim().toLowerCase();
 
     if (keyword) {
       result = result.filter(
@@ -48,10 +50,9 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
       );
     }
 
-    if (propertyType && propertyType.toLowerCase() !== "all") {
+    if (propertyType && propertyType !== "All") {
       result = result.filter(
-        (prop) =>
-          prop?.type?.toLowerCase() === propertyType.toLowerCase()
+        (prop) => prop.type?.toLowerCase() === type
       );
     }
 
@@ -63,7 +64,6 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
     setIsLoading(false);
   }
 };
-
 
     fetchProperties();
   }, [searchQuery, activeCity, propertyType]);
