@@ -21,11 +21,11 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-  const fetchProperties = async () => {
+ const fetchProperties = async () => {
   try {
     setIsLoading(true);
 
-    const proxy = "https://corsproxy.io/?";
+    const proxy = "https://cors-anywhere-bt8l.onrender.com";
     const url = "https://staging.thunderscript.com/api/properties";
 
     const res = await axios.get(proxy + url);
@@ -35,6 +35,7 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
     const city = activeCity?.trim().toLowerCase();
     const type = propertyType?.trim().toLowerCase();
 
+    // Filter by search input
     if (keyword) {
       result = result.filter(
         (prop) =>
@@ -44,12 +45,14 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
       );
     }
 
-    if (activeCity) {
-      result = result.filter(
-        (prop) => prop.address?.toLowerCase().includes(city)
+    // Filter by city tab
+    if (city) {
+      result = result.filter((prop) =>
+        prop.address?.toLowerCase().includes(city)
       );
     }
 
+    // Filter by property type
     if (propertyType && propertyType !== "All") {
       result = result.filter(
         (prop) => prop.type?.toLowerCase() === type
@@ -58,12 +61,13 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
 
     setProperties(result);
   } catch (err) {
-    console.error("Error fetching properties:", err);
+    console.error("❌ API Fetch Error:", err);
     setProperties([]);
   } finally {
     setIsLoading(false);
   }
 };
+
 
     fetchProperties();
   }, [searchQuery, activeCity, propertyType]);
