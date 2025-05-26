@@ -21,53 +21,50 @@ const ProjectsSection = ({ searchQuery = "", propertyType = "" }) => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
- const fetchProperties = async () => {
-  try {
-    setIsLoading(true);
+    const fetchProperties = async () => {
+      try {
+        setIsLoading(true);
 
-    const proxy = "https://cors-anywhere-bt8l.onrender.com";
-    const url = "https://staging.thunderscript.com/api/properties";
+        const proxy = "https://cors-anywhere-bt8l.onrender.com/";
+        const target = "https://staging.thunderscript.com/api/properties";
+        const res = await axios.get(proxy + target);
 
-    const res = await axios.get(proxy + url);
-    let result = res.data || [];
+        let result = res.data || [];
 
-    const keyword = searchQuery?.trim().toLowerCase();
-    const city = activeCity?.trim().toLowerCase();
-    const type = propertyType?.trim().toLowerCase();
+        const keyword = searchQuery?.trim().toLowerCase();
+        const city = activeCity?.trim().toLowerCase();
+        const type = propertyType?.trim().toLowerCase();
 
-    // Filter by search input
-    if (keyword) {
-      result = result.filter(
-        (prop) =>
-          prop.title?.toLowerCase().includes(keyword) ||
-          prop.address?.toLowerCase().includes(keyword) ||
-          prop.description?.toLowerCase().includes(keyword)
-      );
-    }
+        // Filter by search input
+        if (keyword) {
+          result = result.filter(
+            (prop) =>
+              prop.title?.toLowerCase().includes(keyword) ||
+              prop.address?.toLowerCase().includes(keyword) ||
+              prop.description?.toLowerCase().includes(keyword)
+          );
+        }
 
-    // Filter by city tab
-    if (city) {
-      result = result.filter((prop) =>
-        prop.address?.toLowerCase().includes(city)
-      );
-    }
+        // Filter by city tab
+        if (city) {
+          result = result.filter((prop) =>
+            prop.address?.toLowerCase().includes(city)
+          );
+        }
 
-    // Filter by property type
-    if (propertyType && propertyType !== "All") {
-      result = result.filter(
-        (prop) => prop.type?.toLowerCase() === type
-      );
-    }
+        // Filter by property type
+        if (propertyType && propertyType !== "All") {
+          result = result.filter((prop) => prop.type?.toLowerCase() === type);
+        }
 
-    setProperties(result);
-  } catch (err) {
-    console.error("❌ API Fetch Error:", err);
-    setProperties([]);
-  } finally {
-    setIsLoading(false);
-  }
-};
-
+        setProperties(result);
+      } catch (err) {
+        console.error("❌ API Fetch Error:", err);
+        setProperties([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
     fetchProperties();
   }, [searchQuery, activeCity, propertyType]);
