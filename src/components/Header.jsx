@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
+import logo from "../assets/home.png"
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2 font-semibold text-lg">
-            <img src="/logo-icon.png" alt="Logo" className="w-6 h-6" />
+            <img src={logo} alt="Logo" className="w-6 h-6" />
             <span>Realtor X</span>
           </div>
 
